@@ -11,9 +11,17 @@ use Stevebauman\Location\Facades\Location;
 class RequestAmbulanceController extends Controller
 {
     public function newRequest(Request $request) {
+      /*
+      on the server
+
       $userIP = $request->ip();
       $currentUserInfo = Location::get($userIP);
+      */
+      
+      $currentUserInfo = Location::get("92.119.177.20");
+      print_r($currentUserInfo->latitude);
+      print_r($currentUserInfo->longitude);
           
-      return view('user', compact('currentUserInfo'));
+      return view('user_location', compact('currentUserInfo'));
     }
 }

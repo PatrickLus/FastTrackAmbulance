@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\RequestAmbulanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::controller(PatientController::class)->group(function () {
     Route::get('/p/add', 'addPatient');
     Route::post('/p/{id}', 'update');
 });
+
+Route::get('/user-location', [RequestAmbulanceController::class, 'newRequest']);
