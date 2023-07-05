@@ -10,13 +10,15 @@ class Request extends Model
     use HasFactory;
 
     //properties
-    protected $table= "requests";
+    // TODO: location to lon and lat
+    protected $table = "requests";
     protected $primaryKey = "id";
-    protected $fillable = ['patient_id','hospital_id','location'];
-    protected $hidden = ['password','otp'];
+    protected $fillable = ['patient_id', 'hospital_id', 'location'];
+    protected $hidden = ['password', 'otp'];
 
     //relationships
-    public function patients (){
+    public function patients()
+    {
         return  $this->belongsTo(Patient::class);
     }
 }

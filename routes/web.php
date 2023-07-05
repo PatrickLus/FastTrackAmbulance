@@ -30,3 +30,7 @@ Route::controller(PatientController::class)->group(function () {
 });
 
 Route::get('/user-location', [RequestAmbulanceController::class, 'newRequest']);
+
+
+Route::get('login', [PatientController::class, 'login']);
+Route::get('register', [PatientController::class, 'register']);

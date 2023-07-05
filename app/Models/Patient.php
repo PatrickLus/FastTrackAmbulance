@@ -10,13 +10,14 @@ class Patient extends Model
     use HasFactory;
 
     //properties
-    protected $table= "patients";
+    protected $table = "patients";
     protected $primaryKey = "id";
-    protected $fillable = ['fName','lName','phone','email','password','otp'];
-    protected $hidden = ['password','otp'];
+    protected $fillable = ['fName', 'lName', 'phone', 'email', 'password', 'otp'];
+    protected $hidden = ['password', 'otp'];
 
     //relationships
-    public function requests (){
+    public function requests()
+    {
         return  $this->hasMany(Request::class);
     }
 }

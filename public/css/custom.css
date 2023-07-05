@@ -1,0 +1,9 @@
+/*when the link is active*/
+.navbar-vertical .navbar-nav .nav-item .nav-link .icon i{
+  color:black;
+}
+
+/*when the link is active*/
+.navbar-vertical .navbar-nav .nav-item .nav-link.active .icon i{
+  color:white;
+}

@@ -7,19 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hospital extends Model
 {
-    use HasFactory;
+   use HasFactory;
 
-     //properties
-     protected $table= "hospitals";
-     protected $primaryKey = "id";
-     protected $fillable = ['name','driver_id','location'];
+   //properties
+   protected $table = "hospitals";
+   protected $primaryKey = "id";
+   protected $fillable = ['name', 'driver_id', 'location'];
 
-     //relationships
-     public function drivers(){
-        return $this->hasMany(Driver::class);
-     }
+   //relationships
+   public function drivers()
+   {
+      return $this->hasMany(Driver::class);
+   }
 
-     public function requests (){
-        return $this->hasMany(Request::class);
-     }
+   public function requests()
+   {
+      return $this->hasMany(Request::class);
+   }
 }
