@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
-use DB;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use Session;
 use Brian2694\Toastr\Facades\Toastr;
 
 class LoginController extends Controller
@@ -69,7 +67,6 @@ class LoginController extends Controller
         $todayDate  = $dt->toDayDateTimeString();
 
         $activityLog = [
-
             'name'        => $email,
             'email'       => $email,
             'description' => 'has log in',
@@ -80,7 +77,7 @@ class LoginController extends Controller
             ['email' => $email, 'password' => $password, 'status' => 'Active'])) {
             DB::table('activity_logs')->insert($activityLog);
             Toastr::success('Login successfully :)', 'Success');
-            
+
             $user = Auth::user();
             if ($user->role_name === "Admin") {
                 return redirect()->intended('admin');

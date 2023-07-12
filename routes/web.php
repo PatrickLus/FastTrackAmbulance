@@ -1,7 +1,9 @@
 <?php
 
 
-
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\RequestAmbulanceController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PhotosController;
@@ -9,7 +11,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\UserManagementController;
@@ -85,4 +86,3 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('admin/', 'index')->name('admin_home');
     Route::get('admin/add-hospital', 'addHospital')->name('admin_add_hospital');
 });
-
