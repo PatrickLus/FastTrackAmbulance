@@ -85,4 +85,17 @@ Route::post('reset-password', [ResetPasswordController::class, 'updatePassword']
 Route::controller(AdminController::class)->group(function () {
     Route::get('admin/', 'index')->name('admin_home');
     Route::get('admin/add-hospital', 'addHospital')->name('admin_add_hospital');
+    Route::get('admin/view-hospital', 'viewHospital')->name('admin_view_hospital');
+    Route::get('admin/view-patient', 'viewPatient')->name('admin_view_patient');
+
 });
+
+// ----------------------------- Form -----------------------------//
+Route::controller(FormController::class)->group(function () {
+    Route::get('/form/viewDetails', 'view');
+    Route::post('/form/save', 'save')->name('save_hospital');
+    Route::get('/form/update', 'update');
+    Route::get('/form/delete{id}', 'delete')->middleware('auth');
+});
+
+

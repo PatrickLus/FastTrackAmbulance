@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Yoeunes\Toastr\Facades\Toastr;
 use Stevebauman\Location\Facades\Location;
 
 // https://laravelcode.com/post/laravel-8-how-to-get-ip-address
@@ -17,11 +18,11 @@ class RequestAmbulanceController extends Controller
       $userIP = $request->ip();
       $currentUserInfo = Location::get($userIP);
       */
-      
+
       $currentUserInfo = Location::get("92.119.177.20");
       print_r($currentUserInfo->latitude);
       print_r($currentUserInfo->longitude);
-          
+
       return view('user_location', compact('currentUserInfo'));
     }
 }

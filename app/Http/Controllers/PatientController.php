@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Yoeunes\Toastr\Facades\Toastr;
 use App\Models\Patient;
 
 class PatientController extends Controller
@@ -21,6 +24,20 @@ class PatientController extends Controller
     {
         return view('patient.register');
     }
+    /*public function viewDetail($id)
+    {
+        if (Auth::user()->role_name=='Admin')
+        {
+            $id = DB::table('users')->where('id',$id)->get();
+            //   $roleName = DB::table('role_type_users')->get();
+            // $userStatus = DB::table('user_types')->get();
+            return view('Admin.viewPatient',compact('id'));
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
+    }*/
 
     public function authRegister(Request $request)
     {
