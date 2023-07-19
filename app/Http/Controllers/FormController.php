@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Form;
-//use Brian2694\Toastr\Facades\Toastr;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Yoeunes\Toastr\Facades;
 use Yoeunes\Toastr\Facades\Toastr;
 
@@ -19,7 +21,7 @@ class FormController extends Controller
     public function data()
     {
         $data = DB::table('Form')->get();
-        //return view('view_record.viewrecord',compact('data'));
+        //return view('view_record.viewrecord', compact('data'));
     }
 
     public function view($id)
@@ -66,18 +68,27 @@ class FormController extends Controller
             $contact_number = $request->contact_number;
             $address = $request->address;
 
-            $Form = new Form();
-            $Form->full_name = $full_name;
-            $Form->email_address = $email_address;
-            $Form->contact_number = $contact_number;
-            $Form->address = $address;
-            $Form->save();
+            $password = Str::random(10);
+            $user = User::create([
+                'name'          => $full_name,
+                'email'         => $email_address,
+                'phone_number'  => $contact_number,
+                'role_name'     => "Driver",
+                'password'      => Hash::make($password),
+                'status'        => "Active",
+            ]);
+
+            $form = new Form();
+            $form->id = $user->id;
+            $form->full_name = $full_name;
+            $form->email_address = $email_address;
+            $form->contact_number = $contact_number;
+            $form->address = $address;
+            $form->save();
 
             Toastr::success('Data added successfully :)', 'Success');
             return redirect()->back();
-
         } catch (\Exception $e) {
-
             Toastr::error('Data added fail :)', 'Error');
              return redirect()->back();
         }

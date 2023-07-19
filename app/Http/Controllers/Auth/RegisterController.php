@@ -25,7 +25,7 @@ class RegisterController extends Controller
             'password'  => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
-        
+
         User::create([
             'name'          => $request->name,
             'email'         => $request->email,
@@ -35,7 +35,7 @@ class RegisterController extends Controller
             'status'        => "Active",
         ]);
 
-        Toastr::success('Create new account successfully :)','Success');
+        Toastr::success('Create new account successfully :)', 'Success');
         return redirect('login');
     }
 }

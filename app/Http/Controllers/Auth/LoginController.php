@@ -74,7 +74,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt(
-            ['email' => $email, 'password' => $password, 'status' => 'Active'])) {
+            ['email' => $email, 'password' => $password])) {
             DB::table('activity_logs')->insert($activityLog);
             Toastr::success('Login successfully :)', 'Success');
 

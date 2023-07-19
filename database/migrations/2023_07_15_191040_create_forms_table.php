@@ -14,7 +14,7 @@ class CreateFormsTable extends Migration
     public function up()
     {
         Schema::create('forms', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedInteger('id');
             $table->string('full_name')->nullable();
             $table->string('email_address')->nullable();
             $table->string('contact_number')->nullable();

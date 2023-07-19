@@ -20,8 +20,8 @@ class CreateRequestsTable extends Migration
             $table->string('location',200);
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('hospital_id')->references('id')->on('hospitals');
+            $table->foreign('patient_id')->references('id')->on('users');
+            $table->foreign('hospital_id')->references('id')->on('users');
         });
     }
 
