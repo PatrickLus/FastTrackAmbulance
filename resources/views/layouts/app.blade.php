@@ -49,14 +49,13 @@
                         <img src="{{ URL::to('img/logo.png') }}" class="navbar-brand-img w-30" alt="main_logo">
                     </a>
 
-                    <div class="collapse navbar-collapse" id="navigation">
-                        <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
-                            <li class="nav-item w-100">
-
-                            </li>
-                        </ul>
-
-                    </div>
+                    @if(!empty(Auth::user()))
+                        <div class="collapse navbar-collapse" id="navigation">
+                            <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
+                                <li class="nav-item w-100"><a href="{{ route('logout') }}">Logout</a></li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </nav>
             <!-- End Navbar -->
@@ -65,7 +64,7 @@
 </div>
 <main class="main-content  mt-0">
     <section>
-        <pre><div class="page-header min-vh-25"></pre>
+        <div class="page-header min-vh-25"></div>
 
         <div class="container">
             @yield('content')

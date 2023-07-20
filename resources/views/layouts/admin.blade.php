@@ -56,7 +56,7 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    @if (Auth::user()->role_name=='Admin')
+                    @if (Auth::user()->role_name == 'Admin')
                         <span class="badge bg-success">{{ Auth::user()->name }}</span>
                         <br>
                     @endif
