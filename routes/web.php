@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RequestAmbulanceController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,10 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/request', [HomeController::class, 'requestAmbulanceView'])->name('req_am');
 Route::post('/request', [HomeController::class, 'requestAmbulanceAction'])->name('req_am_act');
+
+// ----------------------------- hospital dashboard ------------------------------//
+Route::get('/hospital', [HospitalController::class, 'index'])->name('hospital_name');
+Route::get('/hospital/request/{id}', [HospitalController::class, 'detail'])->name('hospital_req');
 
 // -----------------------------login----------------------------------------//
 Route::get('/login', [LoginController::class, 'login'])->name('login');

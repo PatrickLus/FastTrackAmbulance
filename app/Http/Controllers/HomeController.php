@@ -68,7 +68,7 @@ class HomeController extends Controller
         $_request->patient_id = Auth::id();
         $_request->hospital_id = $request->hospital;
         $_request->description = $request->description;
-        $_request->location = $loc->latitude . '+' . $loc->latitude;
+        $_request->location = $loc->latitude . ',' . $loc->longitude;
         $_request->save();
 
         return redirect()->route('home');

@@ -47,6 +47,14 @@
 
                             <button class="btn btn-primary btn-block btn-lg shadow-lg mt-1">Send Request</button>
                         </form>
+                        <div id="map"></div>
+                        <script>
+                            navigator.geolocation.getCurrentPosition(position => {
+                                const { latitude, longitude } = position.coords;
+                                // Show a map centered at latitude / longitude.
+                                map.innerHTML = '<iframe width="700" height="300" src="https://maps.google.com/maps?q='+latitude+','+longitude+'&amp;z=15&amp;output=embed"></iframes>';
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

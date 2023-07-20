@@ -82,7 +82,7 @@ class LoginController extends Controller
             if ($user->role_name === "Admin") {
                 return redirect()->intended('admin');
             } elseif ($user->role_name === "Driver") {
-                return "Driver";
+                return redirect()->intended('hospital');
             }
 
             return redirect()->intended('home');

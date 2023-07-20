@@ -19,7 +19,7 @@ class RequestAmbulanceController extends Controller
       $currentUserInfo = Location::get($userIP);
       */
 
-      $currentUserInfo = Location::get("92.119.177.20");
+      $currentUserInfo = Location::get("197.237.103.18");
       print_r($currentUserInfo->latitude);
       print_r($currentUserInfo->longitude);
 

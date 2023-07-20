@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Yoeunes\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -16,11 +16,17 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-        return view('Admin.index');
+        $hospitals = DB::table('forms')->get()->count();
+        $logs = DB::table('forms')->get()->count();
+        $patients = DB::table('users')
+            ->where('role_name', '=', 'Patient')
+            ->get()->count();
+
+        return view('Admin.index', compact('hospitals', 'patients', 'logs'));
     }
 
     /**
@@ -35,7 +41,8 @@ class AdminController extends Controller
 
     public function viewHospital()
     {
-        return view('Admin.viewHospital');
+        $hospitals = DB::table('forms')->get();
+        return view('Admin.viewHospital', compact('hospitals'));
     }
 
     public function viewPatient()
